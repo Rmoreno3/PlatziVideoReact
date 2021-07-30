@@ -1,9 +1,10 @@
 import React from 'react';
+import logo from '../assets/static/logo-platzi-video-BW2.png';
 
 const Header = () => (
   <header className='cabezera'>
     <figure className='logo__container'>
-      <img src='' alt='Logo de PlatziVideo' />
+      <img src={logo} alt='Logo de PlatziVideo' />
     </figure>
     <nav className='cabezera__menu'>
       <div className='cabezera__menu--perfil'>

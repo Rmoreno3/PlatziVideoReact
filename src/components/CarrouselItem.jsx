@@ -1,9 +1,10 @@
 import React from 'react';
+import user from '../assets/static/user1.jpg';
 
 const CarrouselItem = () => (
   <div className='carrousel__item'>
     <figure className='carrousel__img__container'>
-      <img src='' alt='imagen' />
+      <img src={user} alt='imagen' />
     </figure>
     <div className='carrousel__item__icons'>
       <a href='/'>

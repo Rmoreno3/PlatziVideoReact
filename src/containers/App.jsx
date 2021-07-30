@@ -21,10 +21,6 @@ const App = () => (
         <CarrouselItem />
         <CarrouselItem />
         <CarrouselItem />
-        <CarrouselItem />
-        <CarrouselItem />
-        <CarrouselItem />
-        <CarrouselItem />
       </Carrousel>
     </Categories>
 
@@ -34,6 +30,14 @@ const App = () => (
         <CarrouselItem />
         <CarrouselItem />
         <CarrouselItem />
+        <CarrouselItem />
+        <CarrouselItem />
+        <CarrouselItem />
+      </Carrousel>
+    </Categories>
+
+    <Categories title='Originales de PlatziVideo'>
+      <Carrousel>
         <CarrouselItem />
         <CarrouselItem />
         <CarrouselItem />
