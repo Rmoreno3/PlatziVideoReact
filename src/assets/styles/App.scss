@@ -2,17 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap');
 
 /* VARIABLES DESIGN SYSTEM */
-  $font-base: 'Poppins', sans-serif;
-  $headline1: bold 95px/153.71px $font-base;
-  $headline2: bold 59px/95.46px $font-base;
-  $headline3: bold 48px/77.66px $font-base;
-  $headline4: bold 34px/55.01px $font-base;
-  $headline5: bold 24px/38.83px $font-base;
-  $body1: 16px/25.89px $font-base;
-  $body2: 14px/22.65px $font-base;
-  $color_white: #FFFFFF;
-  $color_black: #000000;
-  $background-gradient: linear-gradient(to right, #240b36, #c31432);
+$font-base: 'Poppins', sans-serif;
+$headline1: bold 95px/153.71px $font-base;
+$headline2: bold 59px/95.46px $font-base;
+$headline3: bold 48px/77.66px $font-base;
+$headline4: bold 34px/55.01px $font-base;
+$headline5: bold 24px/38.83px $font-base;
+$body1: 16px/25.89px $font-base;
+$body2: 14px/22.65px $font-base;
+$color_white: #FFFFFF;
+$color_black: #000000;
+$background-gradient: linear-gradient(to right, #240b36, #c31432);
 
 
 /* IMPORTACIONES DE COMPONENTES */
@@ -22,22 +22,25 @@
 @import "./components/Header";
 
 // // FOOTER
-// @import "./Components/Footer";
+@import "./components/Footer";
 
 // /* SEARCH */
-// @import "./Components/Search";
+@import "./components/Search";
 
 // /* CARROUSEL */
-// @import "./Components/Carrousel";
+@import "./components/Carrousel";
 
-// /* LOGIN */
+// CARROUSEL ITEM
+@import "./components/CarrouselItem";
+
+/* LOGIN */
 // @import "./Components/Login";
 
 // /* REGISTRO */
 // @import "./Components/Registro";
 
 // /* MEDIA QUERYS */
-// @import "./Components/Media_Querys";
+@import "./components/MediaQueries";
 
 // /* ERROR */
 // @import "./Components/error";
@@ -63,6 +66,7 @@ html {
   background-size: cover;
   overflow-x: hidden;
 }
+
 body {
   inline-size: 100vw;
   block-size: 100vh;
@@ -75,8 +79,8 @@ body {
   color: $color_white;
 }
 
-// .categories__title {
-//   margin-inline-start: 15px;
-//   /* position: absolute; */
-//   @extend .inline;
-// }
+.categories__title {
+  margin-inline-start: 15px;
+  /* position: absolute; */
+  @extend .inline;
+}

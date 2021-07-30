@@ -1,0 +1,29 @@
+// EXTENDS
+.inline {
+  inline-size: 100%;
+}
+//
+
+.carrousel {
+  @extend .inline;
+  overflow-x: scroll;
+  padding-inline: 30px;
+  padding-block: 30px;
+  position: relative;
+  margin-block-end: 10px;
+  &__container {
+    white-space: nowrap;
+    margin-block: 70px;
+    padding-block-end: 10px;
+  }
+  &__container:hover .carrousel__item {
+    opacity: 0.5;
+    &:hover {
+      transform: scale(1.5);
+      opacity: 1;
+    }
+    &:hover ~ .carrousel__item {
+      transform: translate3d(100px, 0, 0);
+    }
+  }
+}

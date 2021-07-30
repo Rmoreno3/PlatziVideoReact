@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+  block-size: 100px;
+  align-items: center;
+  padding-inline-start: 15px;
+  & > a {
+    margin-inline-start: 10px;
+    color: $color_white;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

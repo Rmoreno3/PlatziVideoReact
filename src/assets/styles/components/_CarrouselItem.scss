@@ -1,0 +1,67 @@
+.carrousel__item {
+  display: inline-block;
+  cursor: pointer;
+  inline-size: 200px;
+  block-size: 250px;
+  border-radius: 20px;
+  background: blue;
+  overflow: hidden;
+  margin-inline-end: 10px;
+  transition: 400ms all;
+  transform-origin: center left;
+  position: relative;
+  font-size: 13px;
+  &__details {
+    position: absolute;
+    top: 190px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding-inline-start: 10px;
+  }
+  &__icons {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+    opacity: 1;
+    transition: 400ms opacity;
+    position: absolute;
+    top: 160px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding-inline-start: 10px;
+    font-size: 28px;
+    & a {
+      color: red;
+    }
+    & a:nth-child(1) {
+      padding-inline-end: 5px;
+    }
+  }
+}
+
+.carrousel__img__container {
+  inline-size: 200px;
+  block-size: 250px;
+  object-fit: cover;
+  & > img {
+    @extend .inline;
+    block-size: 100%;
+  }
+}
+
+.carrousel {
+  &::-webkit-scrollbar {
+    width: 8px; 
+    height: 8px; 
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 4px;
+  }
+}
