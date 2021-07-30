@@ -1,0 +1,50 @@
+.cabezera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  inline-size: 100vw;
+  block-size: 80px;
+  background-color: transparent;
+  color: $color_white;
+  &__menu {
+    cursor: pointer;
+    inline-size: 100px;
+    margin-inline-end: 15px;
+  }
+  &__menu:hover ul {
+    display: block;
+  }
+  &__menu li a:hover {
+    text-decoration: underline;
+  }
+  &__menu--perfil {
+    display: flex;
+    align-items: center;
+  }
+  &__menu--perfil > i {
+    font-size: 30px;
+    margin-inline-end: 10px;
+  }
+  &__menu--desplegable {
+    display: none;
+    position: absolute;
+    text-align: right;
+    margin-inline-start: -28px;
+  }
+  &__menu--desplegable li {
+    list-style-type: none;
+    margin-block-start: 5px;
+  }
+  &__menu--desplegable a {
+    text-decoration: none;
+    color: $color_white;
+  }
+}
+
+.logo__container {
+  inline-size: 200px;
+  & > img {
+    inline-size: 100%;
+    margin-inline-start: 15px;
+  }
+}
