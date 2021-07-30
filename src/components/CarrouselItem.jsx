@@ -1,10 +1,9 @@
 import React from 'react';
-import user from '../assets/static/user1.jpg';
 
-const CarrouselItem = () => (
+const CarrouselItem = ({ cover, title, year, contentRating, duration }) => (
   <div className='carrousel__item'>
     <figure className='carrousel__img__container'>
-      <img src={user} alt='imagen' />
+      <img src={cover} alt='imagen' />
     </figure>
     <div className='carrousel__item__icons'>
       <a href='/'>
@@ -15,8 +14,10 @@ const CarrouselItem = () => (
       </a>
     </div>
     <div className='carrousel__item__details'>
-      <p className='carrousel__item__details--title'>Titulo Descriptivo</p>
-      <p className='carrousel__item__details--subtitle'>2021 45+ 120min</p>
+      <p className='carrousel__item__details--title'>{title}</p>
+      <p className='carrousel__item__details--subtitle'>
+        {`${year} ${contentRating} ${duration}`}
+      </p>
     </div>
   </div>
 );
