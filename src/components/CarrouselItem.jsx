@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CarrouselItem = ({ cover, title, year, contentRating, duration }) => (
   <div className='carrousel__item'>
@@ -21,5 +22,13 @@ const CarrouselItem = ({ cover, title, year, contentRating, duration }) => (
     </div>
   </div>
 );
+
+CarrouselItem.propTypes = {
+  cover: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  year: PropTypes.number,
+  contentRating: PropTypes.string,
+  duration: PropTypes.number,
+};
 
 export default CarrouselItem;
