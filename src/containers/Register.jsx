@@ -1,5 +1,6 @@
 import React from 'react';
-import '../assets/styles/components/_Register.scss';
+import { Link } from 'react-router-dom';
+import '../assets/styles/App.scss';
 
 const Register = () => (
   <section className='registro'>
@@ -28,8 +29,10 @@ const Register = () => (
         </div>
       </section>
       <section className='registro__container--footer'>
-        <p>¿Tienes una cuenta?</p>
-        <h3><a href='/'>Inicia Sesion</a></h3>
+        <p>¿Ya tienes una cuenta?</p>
+        <Link to='/login'>
+          <h3>Iniciar Sesion</h3>
+        </Link>
       </section>
     </div>
   </section>

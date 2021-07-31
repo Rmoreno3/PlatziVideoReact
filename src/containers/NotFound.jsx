@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/styles/components/_NotFound.scss';
+import '../assets/styles/App.scss';
 
 const NotFound = () => (
   <main className='main'>

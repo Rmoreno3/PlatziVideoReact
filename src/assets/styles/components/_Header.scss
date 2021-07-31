@@ -14,7 +14,7 @@
   &__menu:hover ul {
     display: block;
   }
-  &__menu li a:hover {
+  &__menu li:hover {
     text-decoration: underline;
   }
   &__menu--perfil {
@@ -43,8 +43,9 @@
 
 .logo__container {
   inline-size: 200px;
-  & > a > img {
-    inline-size: 200px;
-    margin-inline-start: 15px;
-  }
+}
+
+#log {
+  inline-size: 200px;
+  margin-inline-start: 15px;
 }

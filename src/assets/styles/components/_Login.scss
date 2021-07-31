@@ -1,13 +1,13 @@
 .login {
   display: flex;
-  block-size: 100%;
+  block-size: 100vh;
   justify-content: center;
   align-items: center;
   &__container {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    border: 2px solid #FFF;
+    border: 2px solid $color_white;
     block-size: 100%;
     inline-size: 400px;
     border-radius: 40px;
@@ -42,8 +42,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    & h3 {
-      margin-inline-start: 6px;
+    & p {
+      margin-inline-end: 10px;
     }
   }
   &__container--redes {
@@ -51,16 +51,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-}
-
-.redes__container {
-  display: flex;
-  align-items: center;
-  margin-block-end: 15px;
-  & > i {
-    font-size: 25px;
-    margin-inline-end: 5px;
   }
 }
 
@@ -75,18 +65,18 @@
 
 a {
   text-decoration: none;
-  color: #FFF;
+  color: $color_white;
 }
 
 .input_form {
   background-color: transparent;
   border: none;
   outline: none;
-  border-bottom: 2px solid #FFF;
+  border-bottom: 2px solid $color_white;
   inline-size: 100%;
   padding-inline: 10px;
   padding-block: 5px;
-  color: #FFF;
+  color: $color_white;
 }
 
 .button_form {
@@ -98,7 +88,7 @@ a {
   border: none;
   margin-block: 10px;
   background-color: rgba(255, 255, 255, 0.2);
-  color: #FFF;
+  color: $color_white;
   cursor: pointer;
   &:hover {
     transition: 600ms all;

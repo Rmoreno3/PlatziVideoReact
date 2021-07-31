@@ -1,5 +1,6 @@
 import React from 'react';
-import '../assets/styles/components/_Login.scss';
+import { Link } from 'react-router-dom';
+import '../assets/styles/App.scss';
 
 const Login = () => (
   <section className='login'>
@@ -33,7 +34,9 @@ const Login = () => (
       </section>
       <section className='login__container--footer'>
         <p>¿No tienes una cuenta?</p>
-        <h3><a href='/'>Registrate</a></h3>
+        <Link to='/register'>
+          <h3>Registrate</h3>
+        </Link>
       </section>
     </div>
   </section>

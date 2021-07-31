@@ -12,6 +12,7 @@
   position: relative;
   font-size: 13px;
   &__details {
+    display: none;
     position: absolute;
     top: 190px;
     left: 0;
@@ -20,6 +21,7 @@
     padding-inline-start: 10px;
   }
   &__icons {
+    display: none;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
     opacity: 1;
     transition: 400ms opacity;
@@ -37,7 +39,16 @@
       padding-inline-end: 5px;
     }
   }
+  &:hover .carrousel__item__icons {
+    display: block;
+  }
+
+  &:hover .carrousel__item__details {
+    display: block;
+  }
 }
+
+
 
 .carrousel__img__container {
   inline-size: 200px;

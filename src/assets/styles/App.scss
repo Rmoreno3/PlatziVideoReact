@@ -33,11 +33,18 @@ $background-gradient: linear-gradient(to right, #240b36, #c31432);
 // CARROUSEL ITEM
 @import "./components/CarrouselItem";
 
+// /* LOGIN */
+@import "./components/Login";
+
+// /* REGISTRO */
+@import "./components/Register";
+
 // /* MEDIA QUERYS */
 @import "./components/MediaQueries";
 
 // /* ERROR */
-// @import "./Components/error";
+@import "./components/NotFound";
+
 /* REINICIANDO ESTILOS GLOBALES */
 
 * {
@@ -78,4 +85,14 @@ body {
   margin-inline-start: 15px;
   /* position: absolute; */
   @extend .inline;
+}
+
+.redes__container {
+  display: flex;
+  align-items: center;
+  margin-block-end: 20px;
+  & > i {
+    font-size: 25px;
+    margin-inline-end: 5px;
+  }
 }
