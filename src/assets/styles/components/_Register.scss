@@ -1,0 +1,80 @@
+.registro {
+  display: flex;
+  block-size: 100%;
+  justify-content: center;
+  align-items: center;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 2px solid #FFF;
+    block-size: 100%;
+    inline-size: 400px;
+    border-radius: 40px;
+    box-shadow: -1px 10px 39px -10px rgba(0,0,0,0.9);
+    background-color: rgba(255, 255, 255, 0.1);
+    & > h2 {
+      margin-inline: 40px;
+      margin-block-start: 20px;
+    }
+    &--form {
+      display: flex;
+      inline-size: 100%;
+      align-items: center;
+      flex-direction: column;
+    }
+    &--remember {
+      display: flex;
+      align-items: center;
+      inline-size: 100%;
+      justify-content: space-around;
+      font-size: 13px;
+      margin-block-start: 10px;
+      & > a {
+        font-weight: bold;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    &--footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      & > h3 {
+        margin-inline-start: 6px;
+      }
+    }
+    &--redes {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.label_registro {
+  inline-size: 70%;
+  margin-block-end: 30px;
+}
+
+.redes__container {
+  display: flex;
+  align-items: center;
+  margin-block-end: 15px;
+  & > i {
+    font-size: 25px;
+    margin-inline-end: 5px;
+  }
+}
+
+.twitter {
+  color: rgb(29, 161, 242);
+}
+
+
+a {
+  text-decoration: none;
+  color: #FFF;
+}

@@ -43,8 +43,8 @@
 
 .logo__container {
   inline-size: 200px;
-  & > img {
-    inline-size: 100%;
+  & > a > img {
+    inline-size: 200px;
     margin-inline-start: 15px;
   }
 }
