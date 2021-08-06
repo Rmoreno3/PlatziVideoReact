@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { setFavorite, deleteFavorite } from '../actions';
 
 const CarrouselItem = (props) => {
-  const { id, cover, title, year, contentRating, duration } = props;
+  const { id, cover, title, year, contentRating, duration, isList } = props;
   const handleSetFavorite = () => {
     props.setFavorite({
       id, cover, title, year, contentRating, duration,
@@ -22,8 +22,13 @@ const CarrouselItem = (props) => {
       </figure>
       <div className='carrousel__item__icons'>
         <i className='fas fa-play-circle' />
-        <i onClick={handleSetFavorite} className='fas fa-plus-circle' />
-        <i onClick={() => handleDeleteFavorite(id)} className='fas fa-trash' />
+        {isList ? (
+          <i
+            onClick={() => handleDeleteFavorite(id)}
+            className='fas fa-trash'
+          />
+        ) :
+          <i onClick={handleSetFavorite} className='fas fa-plus-circle' />}
       </div>
       <div className='carrousel__item__details'>
         <p className='carrousel__item__details--title'>{title}</p>
