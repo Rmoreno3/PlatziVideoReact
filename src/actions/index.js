@@ -1,7 +1,15 @@
-const setFavorite = (payload) => ({
-  type: 'SET_FAVORITE',
+/* eslint-disable import/prefer-default-export */
+export const actions = {
+  setFavorite: 'SET_FAVORITE',
+  deleteFavorite: 'DELETE_FAVORITE',
+};
+
+export const setFavorite = (payload) => ({
+  type: actions.setFavorite,
   payload,
 });
 
-// eslint-disable-next-line import/prefer-default-export
-export { setFavorite };
+export const deleteFavorite = (payload) => ({
+  type: actions.deleteFavorite,
+  payload,
+});
