@@ -1,5 +1,17 @@
 const reducer = (state, action) => {
-  return state;
+  switch (action.type) {
+    case 'SET_FAVORITE':
+      if (state.mylist.filter((element) => element.id === action.payload.id).length !== 0) {
+        console.log('Ya tienes este elemento en tu lista');
+        return state;
+      };
+      return {
+        ...state,
+        mylist: [...state.mylist, action.payload],
+      };
+    default:
+      return state;
+  }
 };
 
 export default reducer;

@@ -1,27 +1,35 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { setFavorite } from '../actions';
 
-const CarrouselItem = ({ cover, title, year, contentRating, duration }) => (
-  <div className='carrousel__item'>
-    <figure className='carrousel__img__container'>
-      <img src={cover} alt='imagen' />
-    </figure>
-    <div className='carrousel__item__icons'>
-      <a href='/'>
+const CarrouselItem = (props) => {
+  const { id, cover, title, year, contentRating, duration } = props;
+  const handleSetFavorite = () => {
+    props.setFavorite({
+      id, cover, title, year, contentRating, duration,
+    });
+  };
+
+  return (
+    <div className='carrousel__item'>
+      <figure className='carrousel__img__container'>
+        <img src={cover} alt='imagen' />
+      </figure>
+      <div className='carrousel__item__icons'>
         <i className='fas fa-play-circle' />
-      </a>
-      <a href='/'>
-        <i className='fas fa-plus-circle' />
-      </a>
+        <i onClick={handleSetFavorite} className='fas fa-plus-circle' />
+      </div>
+      <div className='carrousel__item__details'>
+        <p className='carrousel__item__details--title'>{title}</p>
+        <p className='carrousel__item__details--subtitle'>
+          {`${year} ${contentRating} ${duration}`}
+        </p>
+      </div>
     </div>
-    <div className='carrousel__item__details'>
-      <p className='carrousel__item__details--title'>{title}</p>
-      <p className='carrousel__item__details--subtitle'>
-        {`${year} ${contentRating} ${duration}`}
-      </p>
-    </div>
-  </div>
-);
+  );
+};
 
 CarrouselItem.propTypes = {
   cover: PropTypes.string.isRequired,
@@ -31,4 +39,8 @@ CarrouselItem.propTypes = {
   duration: PropTypes.number,
 };
 
-export default CarrouselItem;
+const mapDispatchToProps = {
+  setFavorite,
+};
+
+export default connect(null, mapDispatchToProps)(CarrouselItem);

@@ -32,10 +32,10 @@
     right: 0;
     padding-inline-start: 10px;
     font-size: 28px;
-    & a {
+    & i {
       color: red;
     }
-    & a:nth-child(1) {
+    & i:nth-child(1) {
       padding-inline-end: 5px;
     }
   }
