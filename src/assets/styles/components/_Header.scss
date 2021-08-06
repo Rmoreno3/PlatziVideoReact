@@ -20,6 +20,11 @@
   &__menu--perfil {
     display: flex;
     align-items: center;
+    & .gravatar {
+      block-size: 70px;
+      inline-size: 70px;
+      border-radius: 50px;
+    }
   }
   &__menu--perfil > i {
     font-size: 30px;

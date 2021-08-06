@@ -7,7 +7,7 @@ import '../assets/styles/App.scss';
 
 const Login = props => {
   const [form, setValues] = useState({
-    user: '',
+    email: '',
   });
 
   const handleInput = event => {
@@ -20,6 +20,7 @@ const Login = props => {
   const handleSubmit = event => {
     event.preventDefault();
     props.loginRequest(form);
+    console.log(form);
     props.history.push('/');
   };
 
@@ -28,13 +29,13 @@ const Login = props => {
       <div className='login__container'>
         <h2>Iniciar Sesion</h2>
         <form className='login__container--form' onSubmit={handleSubmit}>
-          <label htmlFor='user' className='label_login'>
+          <label htmlFor='email' className='label_login'>
             <input
               type='text'
-              name='user'
+              name='email'
               onChange={handleInput}
               className='input_form'
-              placeholder='Username'
+              placeholder='Email'
             />
           </label>
           <label htmlFor='password' className='label_login'>
