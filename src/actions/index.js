@@ -7,6 +7,7 @@ export const actions = {
   logoutRequest: 'LOGOUT_REQUEST',
   registerRequest: 'REGISTER_REQUEST',
   getVideoSource: 'GET_VIDEO_SOURCE',
+  searchVideo: 'SEARCH_VIDEO',
 };
 
 export const setFavorite = payload => ({
@@ -36,5 +37,10 @@ export const registerRequest = payload => ({
 
 export const getVideoSource = payload => ({
   type: actions.getVideoSource,
+  payload,
+});
+
+export const searchVideo = payload => ({
+  type: actions.searchVideo,
   payload,
 });

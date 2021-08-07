@@ -1,3 +1,5 @@
+/* eslint-disable no-case-declarations */
+/* eslint-disable curly */
 import { actions } from '../actions';
 
 const reducer = (state, action) => {
@@ -35,7 +37,18 @@ const reducer = (state, action) => {
       return {
         ...state,
         playing: state.trends.find((item) => item.id === Number(action.payload)) ||
-        state.originals.find((itme) => item.id === Number(action.payload)) || [],
+        state.originals.find((item) => item.id === Number(action.payload)) || [],
+      };
+    case actions.searchVideo:
+      if (action.payload === '') return {
+        ...state,
+        search: [],
+      };
+      const listas = [...state.trends, ...state.originals];
+
+      return {
+        ...state,
+        search: listas.filter((item) => item.title.toLowerCase().includes(action.payload)) || [],
       };
     default:
       return state;
