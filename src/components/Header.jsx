@@ -14,10 +14,6 @@ const Header = (props) => {
     props.logoutRequest({});
   };
 
-  const style = {
-    flex_direction: 'column',
-  };
-
   return (
     <header className='cabezera'>
       <figure className='logo__container'>
@@ -26,7 +22,7 @@ const Header = (props) => {
         </Link>
       </figure>
       <nav className='cabezera__menu'>
-        <div className='cabezera__menu--perfil' style={style}>
+        <div className='cabezera__menu--perfil'>
           {hasUser ?
             <img src={gravatar(user.email)} alt={user.email} className='gravatar' /> :
             <i className='fas fa-user' />}

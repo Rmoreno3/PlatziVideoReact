@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setFavorite, deleteFavorite } from '../actions';
@@ -21,7 +22,9 @@ const CarrouselItem = (props) => {
         <img src={cover} alt='imagen' />
       </figure>
       <div className='carrousel__item__icons'>
-        <i className='fas fa-play-circle' />
+        <Link to={`/player/${id}`}>
+          <i className='fas fa-play-circle' />
+        </Link>
         {isList ? (
           <i
             onClick={() => handleDeleteFavorite(id)}
