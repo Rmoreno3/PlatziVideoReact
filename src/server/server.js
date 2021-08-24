@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import webpack from 'webpack';
+import Layout from '../frontend/components/Layout';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import initialState from '../frontend/initialState';
@@ -32,7 +33,7 @@ if (ENV === 'development') {
   app.use(webpackHotMiddleware(compiler));
 }
 
-const setResponse = (html) => {
+const setResponse = (html, preloadedState) => {
   return `
   <!DOCTYPE html>
   <html lang="es-ES">
@@ -46,6 +47,9 @@ const setResponse = (html) => {
   </head>
   <body>
     <div id="App">${html}</div>
+    <script>window.__PRELOADED_STATE__ = ${JSON.stringify(
+      preloadedState
+    ).replace(/</g, '\\u003c')}</script>
     <script src="assets/app.js" type="text/javascript"></script>
   </body>
   </html>
@@ -54,15 +58,16 @@ const setResponse = (html) => {
 
 const renderApp = (req, res) => {
   const store = createStore(reducer, initialState);
+  const preloadedState = store.getState();
   const html = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.utl} context={{}}>
-        {renderRoutes(serverRoutes)}
+        <Layout>{renderRoutes(serverRoutes)}</Layout>
       </StaticRouter>
     </Provider>
   );
 
-  res.send(setResponse(html));
+  res.send(setResponse(html, preloadedState));
 };
 
 app.get('*', renderApp);

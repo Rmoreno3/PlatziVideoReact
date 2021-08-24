@@ -44,8 +44,15 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|gif|jpg)$/,
-        type: 'asset/resource',
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'assets/[md5:hash].[ext]',
+            },
+          },
+        ],
       },
     ],
   },
