@@ -1,6 +1,15 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import webpack from 'webpack';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import initialState from '../frontend/initialState';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { renderRoutes } from 'react-router-config';
+import { StaticRouter } from 'react-router-dom';
+import serverRoutes from '../frontend/routes/serverRoutes';
+import reducer from '../frontend/reducers';
 
 dotenv.config();
 
@@ -23,8 +32,8 @@ if (ENV === 'development') {
   app.use(webpackHotMiddleware(compiler));
 }
 
-app.get('*', (req, res) => {
-  res.send(`
+const setResponse = (html) => {
+  return `
   <!DOCTYPE html>
   <html lang="es-ES">
   <head>
@@ -36,12 +45,27 @@ app.get('*', (req, res) => {
     <title>PlatziVideo</title>
   </head>
   <body>
-    <div id="App"></div>
+    <div id="App">${html}</div>
     <script src="assets/app.js" type="text/javascript"></script>
   </body>
   </html>
-  `);
-});
+  `;
+};
+
+const renderApp = (req, res) => {
+  const store = createStore(reducer, initialState);
+  const html = renderToString(
+    <Provider store={store}>
+      <StaticRouter location={req.utl} context={{}}>
+        {renderRoutes(serverRoutes)}
+      </StaticRouter>
+    </Provider>
+  );
+
+  res.send(setResponse(html));
+};
+
+app.get('*', renderApp);
 
 app.listen(PORT, (err) => {
   err
