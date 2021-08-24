@@ -12,7 +12,7 @@ const Home = ({ mylist, trends, originals, search }) => {
     <>
       <Search />
       {Object.keys(search).length > 0 && (
-        <Categories title='Resultados de la busqueda...'>
+        <Categories title="Resultados de la busqueda...">
           <Carrousel>
             {search?.map((item) => (
               <CarrouselItem key={item.title} {...item} />
@@ -21,21 +21,27 @@ const Home = ({ mylist, trends, originals, search }) => {
         </Categories>
       )}
       {mylist?.length > 0 && (
-        <Categories title='Mi Lista'>
+        <Categories title="Mi Lista">
           <Carrousel>
-            {mylist?.map((item) => <CarrouselItem key={item.id} {...item} isList />)}
+            {mylist?.map((item) => (
+              <CarrouselItem key={item.id} {...item} isList />
+            ))}
           </Carrousel>
         </Categories>
       )}
-      <Categories title='Tendencias'>
+      <Categories title="Tendencias">
         <Carrousel>
-          {trends?.map((item) => <CarrouselItem key={item.id} {...item} />)}
+          {trends?.map((item) => (
+            <CarrouselItem key={item.id} {...item} />
+          ))}
         </Carrousel>
       </Categories>
 
-      <Categories title='Originales de PlatziVideo'>
+      <Categories title="Originales de PlatziVideo">
         <Carrousel>
-          {originals?.map((item) => <CarrouselItem key={item.id} {...item} />)}
+          {originals?.map((item) => (
+            <CarrouselItem key={item.id} {...item} />
+          ))}
         </Carrousel>
       </Categories>
     </>

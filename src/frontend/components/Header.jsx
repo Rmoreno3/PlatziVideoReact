@@ -15,35 +15,43 @@ const Header = (props) => {
   };
 
   return (
-    <header className='cabezera'>
-      <figure className='logo__container'>
-        <Link to='/'>
-          <img src={logo} alt='Logo de PlatziVideo' id='log' />
+    <header className="cabezera">
+      <figure className="logo__container">
+        <Link to="/">
+          <img src={logo} alt="Logo de PlatziVideo" id="log" />
         </Link>
       </figure>
-      <nav className='cabezera__menu'>
-        <div className='cabezera__menu--perfil'>
-          {hasUser ?
-            <img src={gravatar(user.email)} alt={user.email} className='gravatar' /> :
-            <i className='fas fa-user' />}
-          {hasUser ?
-            <p>{user.name}</p> : <p>Perfil</p>}
+      <nav className="cabezera__menu">
+        <div className="cabezera__menu--perfil">
+          {hasUser ? (
+            <img
+              src={gravatar(user.email)}
+              alt={user.email}
+              className="gravatar"
+            />
+          ) : (
+            <i className="fas fa-user" />
+          )}
+          {hasUser ? <p>{user.name}</p> : <p>Perfil</p>}
         </div>
-        <ul className='cabezera__menu--desplegable'>
+        <ul className="cabezera__menu--desplegable">
+          {hasUser ? null : (
+            <Link to="/register">
+              <li>Registrate</li>
+            </Link>
+          )}
 
-          {hasUser ?
-            null : (
-              <Link to='/register'>
-                <li>Registrate</li>
-              </Link>
-            )}
-
-          {hasUser ?
-            <li><a href='/' onClick={handleLogout}>Cerrar Sesion</a></li> : (
-              <Link to='/login'>
-                <li>Iniciar Sesion</li>
-              </Link>
-            )}
+          {hasUser ? (
+            <li>
+              <a href="/" onClick={handleLogout}>
+                Cerrar Sesion
+              </a>
+            </li>
+          ) : (
+            <Link to="/login">
+              <li>Iniciar Sesion</li>
+            </Link>
+          )}
         </ul>
       </nav>
     </header>
