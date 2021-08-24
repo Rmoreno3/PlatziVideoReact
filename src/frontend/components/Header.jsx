@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { logoutRequest } from '../actions';
 import gravatar from '../utils/gravatar';
 import logo from '../assets/static/logo-platzi-video-BW2.png';
+import userIcon from '../assets/static/user-icon.png';
 
 const Header = (props) => {
   const { user } = props;
@@ -30,7 +31,7 @@ const Header = (props) => {
               className="gravatar"
             />
           ) : (
-            <i className="fas fa-user" />
+            <img src={userIcon} alt="user icon" />
           )}
           {hasUser ? <p>{user.name}</p> : <p>Perfil</p>}
         </div>

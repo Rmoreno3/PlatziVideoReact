@@ -41,7 +41,6 @@ const setResponse = (html, preloadedState) => {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/16d9e60b55.js" crossorigin="anonymous"></script>
     <link href="assets/app.css"  rel="stylesheet" type="text/css">
     <title>PlatziVideo</title>
   </head>
