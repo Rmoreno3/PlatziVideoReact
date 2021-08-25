@@ -16,40 +16,40 @@ const Header = (props) => {
   };
 
   return (
-    <header className="cabezera">
-      <figure className="logo__container">
-        <Link to="/">
-          <img src={logo} alt="Logo de PlatziVideo" id="log" />
+    <header className='cabezera'>
+      <figure className='logo__container'>
+        <Link to='/'>
+          <img src={logo} alt='Logo de PlatziVideo' id='log' />
         </Link>
       </figure>
-      <nav className="cabezera__menu">
-        <div className="cabezera__menu--perfil">
+      <nav className='cabezera__menu'>
+        <div className='cabezera__menu--perfil'>
           {hasUser ? (
             <img
               src={gravatar(user.email)}
               alt={user.email}
-              className="gravatar"
+              className='gravatar'
             />
           ) : (
-            <img src={userIcon} alt="user icon" />
+            <img src={userIcon} alt='user icon' />
           )}
           {hasUser ? <p>{user.name}</p> : <p>Perfil</p>}
         </div>
-        <ul className="cabezera__menu--desplegable">
+        <ul className='cabezera__menu--desplegable'>
           {hasUser ? null : (
-            <Link to="/register">
+            <Link to='/register'>
               <li>Registrate</li>
             </Link>
           )}
 
           {hasUser ? (
             <li>
-              <a href="/" onClick={handleLogout}>
+              <a href='/' onClick={handleLogout}>
                 Cerrar Sesion
               </a>
             </li>
           ) : (
-            <Link to="/login">
+            <Link to='/login'>
               <li>Iniciar Sesion</li>
             </Link>
           )}

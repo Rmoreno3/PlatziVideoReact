@@ -196,7 +196,7 @@
     "spaced-comment": [0, "always"],
     "strict": 0,
     "use-isnan": 2,
-    "singleQuote": true,
+    // "singleQuote": true,
     "valid-jsdoc": 0,
     "valid-typeof": 2,
     "vars-on-top": 2,
