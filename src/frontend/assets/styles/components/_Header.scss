@@ -26,9 +26,10 @@
       border-radius: 50px;
     }
   }
-  &__menu--perfil > i {
-    font-size: 30px;
-    margin-inline-end: 10px;
+  &__menu--perfil > img {
+    block-size: 50px;
+    inline-size: 50px;
+    margin-inline-end: 5px;
   }
   &__menu--desplegable {
     display: none;

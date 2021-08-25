@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { logoutRequest } from '../actions';
 import gravatar from '../utils/gravatar';
 import logo from '../assets/static/logo-platzi-video-BW2.png';
+import userIcon from '../assets/static/user-icon.png';
 
 const Header = (props) => {
   const { user } = props;
@@ -23,27 +24,35 @@ const Header = (props) => {
       </figure>
       <nav className='cabezera__menu'>
         <div className='cabezera__menu--perfil'>
-          {hasUser ?
-            <img src={gravatar(user.email)} alt={user.email} className='gravatar' /> :
-            <i className='fas fa-user' />}
-          {hasUser ?
-            <p>{user.name}</p> : <p>Perfil</p>}
+          {hasUser ? (
+            <img
+              src={gravatar(user.email)}
+              alt={user.email}
+              className='gravatar'
+            />
+          ) : (
+            <img src={userIcon} alt='user icon' />
+          )}
+          {hasUser ? <p>{user.name}</p> : <p>Perfil</p>}
         </div>
         <ul className='cabezera__menu--desplegable'>
+          {hasUser ? null : (
+            <Link to='/register'>
+              <li>Registrate</li>
+            </Link>
+          )}
 
-          {hasUser ?
-            null : (
-              <Link to='/register'>
-                <li>Registrate</li>
-              </Link>
-            )}
-
-          {hasUser ?
-            <li><a href='/' onClick={handleLogout}>Cerrar Sesion</a></li> : (
-              <Link to='/login'>
-                <li>Iniciar Sesion</li>
-              </Link>
-            )}
+          {hasUser ? (
+            <li>
+              <a href='/' onClick={handleLogout}>
+                Cerrar Sesion
+              </a>
+            </li>
+          ) : (
+            <Link to='/login'>
+              <li>Iniciar Sesion</li>
+            </Link>
+          )}
         </ul>
       </nav>
     </header>

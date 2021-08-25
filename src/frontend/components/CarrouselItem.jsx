@@ -4,12 +4,20 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setFavorite, deleteFavorite } from '../actions';
+import playIcon from '../assets/static/play-icon.png';
+import iconTrash from '../assets/static/remove-icon.png';
+import addIcon from '../assets/static/plus-icon.png';
 
 const CarrouselItem = (props) => {
   const { id, cover, title, year, contentRating, duration, isList } = props;
   const handleSetFavorite = () => {
     props.setFavorite({
-      id, cover, title, year, contentRating, duration,
+      id,
+      cover,
+      title,
+      year,
+      contentRating,
+      duration,
     });
   };
   const handleDeleteFavorite = (itemId) => {
@@ -23,15 +31,23 @@ const CarrouselItem = (props) => {
       </figure>
       <div className='carrousel__item__icons'>
         <Link to={`/player/${id}`}>
-          <i className='fas fa-play-circle' />
+          <img src={playIcon} alt='button play' className='icon' />
         </Link>
         {isList ? (
-          <i
+          <img
             onClick={() => handleDeleteFavorite(id)}
-            className='fas fa-trash'
+            src={iconTrash}
+            alt='delete'
+            className='icon'
           />
-        ) :
-          <i onClick={handleSetFavorite} className='fas fa-plus-circle' />}
+        ) : (
+          <img
+            onClick={handleSetFavorite}
+            src={addIcon}
+            alt='addicon'
+            className='icon'
+          />
+        )}
       </div>
       <div className='carrousel__item__details'>
         <p className='carrousel__item__details--title'>{title}</p>

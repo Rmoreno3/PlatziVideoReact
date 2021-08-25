@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { registerRequest } from '../actions';
 import '../assets/styles/App.scss';
+import googleIcon from '../assets/static/google-icon.png';
+import twitterIcon from '../assets/static/twitter-icon.png';
 
 const Register = (props) => {
   const [form, setValues] = useState({
@@ -59,15 +61,17 @@ const Register = (props) => {
               onChange={handleInput}
             />
           </label>
-          <button className='button_form' type='submit'>Registrarme</button>
+          <button className='button_form' type='submit'>
+            Registrarme
+          </button>
         </form>
         <section className='registro__container--redes'>
           <div className='redes__container'>
-            <i className='fab fa-google' />
+            <img src={googleIcon} alt='Google' />
             <a href='/'>Registrame con Google</a>
           </div>
           <div className='redes__container'>
-            <i className='fab fa-twitter twitter' />
+            <img src={twitterIcon} alt='Twitter' />
             <a href='/'>Registrarme con Twitter</a>
           </div>
         </section>

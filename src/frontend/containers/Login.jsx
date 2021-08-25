@@ -4,20 +4,22 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { loginRequest } from '../actions';
 import '../assets/styles/App.scss';
+import googleIcon from '../assets/static/google-icon.png';
+import twitterIcon from '../assets/static/twitter-icon.png';
 
-const Login = props => {
+const Login = (props) => {
   const [form, setValues] = useState({
     email: '',
   });
 
-  const handleInput = event => {
+  const handleInput = (event) => {
     setValues({
       ...form,
       [event.target.name]: event.target.value,
     });
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     props.loginRequest(form);
     console.log(form);
@@ -47,14 +49,12 @@ const Login = props => {
               className='input_form'
             />
           </label>
-          <button className='button_form' type='submit'>Iniciar Sesion</button>
+          <button className='button_form' type='submit'>
+            Iniciar Sesion
+          </button>
           <div className='login__container--remember'>
             <label htmlFor='Remember'>
-              <input
-                type='checkbox'
-                name='Remember'
-                value='Remember Me'
-              />
+              <input type='checkbox' name='Remember' value='Remember Me' />
               Remember Me
             </label>
             <a href='/'>Olvide mi contraseña</a>
@@ -62,11 +62,11 @@ const Login = props => {
         </form>
         <section className='login__container--redes'>
           <div className='redes__container'>
-            <i className='fab fa-google' />
+            <img src={googleIcon} alt='Google' />
             <a href='/'>Iniciar sesion con Google</a>
           </div>
           <div className='redes__container'>
-            <i className='fab fa-twitter twitter' />
+            <img src={twitterIcon} alt='twitter icon' />
             <a href='/'>Iniciar sesion con Twitter</a>
           </div>
         </section>

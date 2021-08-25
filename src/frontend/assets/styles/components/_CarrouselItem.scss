@@ -32,11 +32,10 @@
     right: 0;
     padding-inline-start: 10px;
     font-size: 28px;
-    & i {
-      color: red;
-    }
-    & i:nth-child(1) {
-      padding-inline-end: 5px;
+    & .icon {
+      block-size: 35px;
+      inline-size: 35px;
+      margin-inline-end: 5px;
     }
   }
   &:hover .carrousel__item__icons {
