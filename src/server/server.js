@@ -1,11 +1,16 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable operator-linebreak */
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable indent */
+/* eslint-disable global-require */
+/* eslint-disable import/order */
+/* eslint-disable import/no-extraneous-dependencies */
 import express from 'express';
-import dotenv from 'dotenv';
+
 import webpack from 'webpack';
 import helmet from 'helmet';
-import Layout from '../frontend/components/Layout';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import initialState from '../frontend/initialState';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { renderRoutes } from 'react-router-config';
@@ -14,10 +19,25 @@ import serverRoutes from '../frontend/routes/serverRoutes';
 import reducer from '../frontend/reducers';
 import getManifest from './getManifest';
 
-dotenv.config();
+import cookieParser from 'cookie-parser';
+import boom from '@hapi/boom';
+import passport from 'passport';
+import axios from 'axios';
+import initialState from '../frontend/initialState';
+import Layout from '../frontend/components/Layout';
+
+require('dotenv').config();
 
 const { ENV, PORT } = process.env;
 const app = express();
+
+app.use(express.json());
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Basic Strategy
+require('./utils/auth/strategies/basic');
 
 if (ENV === 'development') {
   console.log('Development config');
@@ -91,6 +111,59 @@ const renderApp = (req, res) => {
 
   res.send(setResponse(html, preloadedState, req.hashManifest));
 };
+
+app.post('/auth/sign-in', async function (req, res, next) {
+  passport.authenticate('basic', function (err, data) {
+    const { rememberMe } = req.body;
+
+    console.log(data);
+    try {
+      if (err || !data) {
+        next(boom.unauthorized());
+      }
+      const { token, ...user } = data;
+
+      req.login(data, { session: false }, async function (err) {
+        if (err) {
+          next(err);
+        }
+
+        res.cookie('token', token, {
+          httpOnly: !config.dev,
+          secure: !config.dev,
+          maxAge: rememberMe ? THIRTY_DAYS_IN_SEC : TWO_HOURS_IN_SEC,
+        });
+
+        res.status(200).json(user);
+      });
+    } catch (error) {
+      next(error);
+    }
+  })(req, res, next);
+});
+
+app.post('/auth/sign-up', async function (req, res, next) {
+  const { body: user } = req;
+
+  try {
+    const userData = await axios({
+      url: `${process.env.API_URL}/api/auth/sing-up`,
+      method: 'post',
+      data: {
+        email: user.email,
+        name: user.name,
+        password: user.password,
+      },
+    });
+    res.status(201).json({
+      name: req.body.name,
+      email: req.body.email,
+      id: userData.data.id,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
 
 app.get('*', renderApp);
 
