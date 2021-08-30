@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /* eslint-disable comma-dangle */
 /* eslint-disable operator-linebreak */
 /* eslint-disable prefer-arrow-callback */
@@ -6,7 +7,7 @@
 /* eslint-disable import/order */
 /* eslint-disable import/no-extraneous-dependencies */
 import express from 'express';
-
+import dotenv from 'dotenv';
 import webpack from 'webpack';
 import helmet from 'helmet';
 import React from 'react';
@@ -26,7 +27,7 @@ import axios from 'axios';
 import initialState from '../frontend/initialState';
 import Layout from '../frontend/components/Layout';
 
-require('dotenv').config();
+dotenv.config();
 
 const { ENV, PORT } = process.env;
 const app = express();
@@ -59,16 +60,9 @@ if (ENV === 'development') {
     next();
   });
   app.use(express.static(`${__dirname}/public`));
-  app.use(helmet.dnsPrefetchControl());
-  app.use(helmet.expectCt());
-  app.use(helmet.frameguard());
-  app.use(helmet.hidePoweredBy());
-  app.use(helmet.hsts());
-  app.use(helmet.ieNoOpen());
-  app.use(helmet.noSniff());
+  app.use(helmet());
   app.use(helmet.permittedCrossDomainPolicies());
-  app.use(helmet.referrerPolicy());
-  app.use(helmet.xssFilter());
+  app.disable('x-powered-by');
 }
 
 const setResponse = (html, preloadedState, manifest) => {
@@ -103,7 +97,7 @@ const renderApp = (req, res) => {
   const preloadedState = store.getState();
   const html = renderToString(
     <Provider store={store}>
-      <StaticRouter location={req.utl} context={{}}>
+      <StaticRouter location={req.url} context={{}}>
         <Layout>{renderRoutes(serverRoutes)}</Layout>
       </StaticRouter>
     </Provider>
@@ -144,7 +138,7 @@ app.post('/auth/sign-in', async function (req, res, next) {
 
 app.post('/auth/sign-up', async function (req, res, next) {
   const { body: user } = req;
-
+  debugger;
   try {
     const userData = await axios({
       url: `${process.env.API_URL}/api/auth/sing-up`,
@@ -163,7 +157,10 @@ app.post('/auth/sign-up', async function (req, res, next) {
   } catch (error) {
     next(error);
   }
+  console.log(userData);
 });
+
+console.log(process.env.API_URL);
 
 app.get('*', renderApp);
 

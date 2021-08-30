@@ -1,15 +1,18 @@
+/* eslint-disable import/order */
 /* eslint-disable jsx-quotes */
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { registerUser } from '../actions';
 import '../assets/styles/App.scss';
+import PropTypes from 'prop-types';
 import googleIcon from '../assets/static/google-icon.png';
 import twitterIcon from '../assets/static/twitter-icon.png';
 
 const Register = (props) => {
   const [form, setValues] = useState({
     name: '',
+    id: '',
     email: '',
     password: '',
   });
@@ -24,6 +27,8 @@ const Register = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     props.registerUser(form, '/login');
+    console.log(registerUser);
+    console.log(form);
   };
 
   return (
@@ -88,6 +93,10 @@ const Register = (props) => {
 
 const mapDispatchToProps = {
   registerUser,
+};
+
+Register.propTypes = {
+  registerUser: PropTypes.func,
 };
 
 export default connect(null, mapDispatchToProps)(Register);

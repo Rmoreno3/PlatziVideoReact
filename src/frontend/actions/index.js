@@ -57,8 +57,9 @@ export const setError = (payload) => ({
 
 export const registerUser = (payload, redirectUrl) => {
   return (dispatch) => {
+    debugger;
     axios
-      .post('/auth/sign-up', payload)
+      .post('https://platzivideo-api-two.vercel.app/auth/sign-up', payload)
       .then(({ data }) => dispatch(registerRequest(data)))
       .then(() => {
         window.location.href = redirectUrl;
@@ -66,3 +67,5 @@ export const registerUser = (payload, redirectUrl) => {
       .catch((error) => dispatch(setError(error)));
   };
 };
+
+export { setFavorite as default };
