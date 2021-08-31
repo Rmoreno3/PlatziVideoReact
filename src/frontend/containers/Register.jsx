@@ -12,7 +12,6 @@ import twitterIcon from '../assets/static/twitter-icon.png';
 const Register = (props) => {
   const [form, setValues] = useState({
     name: '',
-    id: '',
     email: '',
     password: '',
   });

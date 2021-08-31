@@ -12,7 +12,6 @@ export const actions = {
   getVideoSource: 'GET_VIDEO_SOURCE',
   searchVideo: 'SEARCH_VIDEO',
   setError: 'SET_ERROR',
-  registerUser: 'REGISTER_USER',
 };
 
 export const setFavorite = (payload) => ({
@@ -57,15 +56,36 @@ export const setError = (payload) => ({
 
 export const registerUser = (payload, redirectUrl) => {
   return (dispatch) => {
-    debugger;
     axios
-      .post('https://platzivideo-api-two.vercel.app/auth/sign-up', payload)
+      .post('https://movies-api-six-olive.vercel.app/api/auth/sign-up', payload)
       .then(({ data }) => dispatch(registerRequest(data)))
       .then(() => {
         window.location.href = redirectUrl;
       })
       .catch((error) => dispatch(setError(error)));
   };
+};
+
+export const loginUser = ({ email, password }, redirectUrl) => {
+  axios({
+    url: '/auth/sign-in',
+    method: 'post',
+    auth: {
+      username: email,
+      password,
+    },
+  })
+    .then(({ data }) => {
+      document.cookie = `email=${data.email}`;
+      document.cookie = `name=${data.name}`;
+      document.cookie = `id=${data.id}`;
+      document.cookie = `token=${data.token}`;
+      dispatch(loginRequest(data));
+    })
+    .then(() => {
+      window.location.href = redirectUrl;
+    })
+    .catch((error) => dispatch(setError(error)));
 };
 
 export { setFavorite as default };

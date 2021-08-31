@@ -26,6 +26,7 @@ import passport from 'passport';
 import axios from 'axios';
 import initialState from '../frontend/initialState';
 import Layout from '../frontend/components/Layout';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -54,6 +55,7 @@ if (ENV === 'development') {
 
   app.use(webpackDevMiddleware(compiler, serverConfig));
   app.use(webpackHotMiddleware(compiler));
+  app.use(cors());
 } else {
   app.use((req, res, next) => {
     if (!req.hashManifest) req.hashManifest = getManifest();
@@ -123,8 +125,8 @@ app.post('/auth/sign-in', async function (req, res, next) {
         }
 
         res.cookie('token', token, {
-          httpOnly: !config.dev,
-          secure: !config.dev,
+          httpOnly: !(process.env.ENV === 'development'),
+          secure: !(process.env.ENV === 'development'),
           maxAge: rememberMe ? THIRTY_DAYS_IN_SEC : TWO_HOURS_IN_SEC,
         });
 
@@ -138,10 +140,9 @@ app.post('/auth/sign-in', async function (req, res, next) {
 
 app.post('/auth/sign-up', async function (req, res, next) {
   const { body: user } = req;
-  debugger;
   try {
     const userData = await axios({
-      url: `${process.env.API_URL}/api/auth/sing-up`,
+      url: 'https://movies-api-six-olive.vercel.app/api/auth/sing-up',
       method: 'post',
       data: {
         email: user.email,
@@ -157,7 +158,6 @@ app.post('/auth/sign-up', async function (req, res, next) {
   } catch (error) {
     next(error);
   }
-  console.log(userData);
 });
 
 console.log(process.env.API_URL);
